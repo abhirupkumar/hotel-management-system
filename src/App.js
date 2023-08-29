@@ -3,17 +3,19 @@ import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Page from './pages/page';
+import Hotels from './pages/hotels';
 
 function App() {
   return (
     <BrowserRouter>
-    <AuthProvider>
+      <AuthProvider>
         <Header />
         <Routes>
           <Route exact path="/" element={<Page />} />
+          <Route exact path="/hotels" element={<Hotels />} />
         </Routes>
-      
-    </AuthProvider> 
+
+      </AuthProvider>
     </BrowserRouter>
   );
 }

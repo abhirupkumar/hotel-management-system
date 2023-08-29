@@ -11,7 +11,7 @@ const Header = () => {
 					</Link>
 					<ul className="items-stretch hidden space-x-3 lg:flex">
 						<li className="flex">
-							<Link rel="noopener noreferrer" to="rooms" className="flex font-semibold items-center px-4">Rooms</Link>
+							<Link rel="noopener noreferrer" to="hotels" className="flex font-semibold items-center px-4">Hotels</Link>
 						</li>
 						<li className="flex">
 							<Link rel="noopener noreferrer" to="about" className="flex font-semibold items-center px-4">About</Link>
