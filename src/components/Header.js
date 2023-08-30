@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
 	return (
-		<header className="px-2 dark:bg-gray-800 dark:text-gray-100">
-			<div className="container flex justify-between h-16 mx-auto">
+		<header className="px-2 dark:bg-gray-800 dark:text-gray-100 font-mono">
+			<div className="container flex justify-between mx-auto">
 				<div className="flex space-x-2">
 					<Link rel="noopener noreferrer" to="" aria-label="Back to homepage" className="flex items-center p-2">
 						<img className='w-[4.5rem] object-contain' src="https://www.tajhotels.com/content/dam/tajhotels/icons/style-icons/logo--Taj.png" alt="icon" />
 					</Link>
 					<ul className="items-stretch hidden space-x-3 lg:flex">
 						<li className="flex">
-							<Link rel="noopener noreferrer" to="hotels" className="flex font-semibold items-center px-4">Hotels</Link>
+							<Link rel="noopener noreferrer" to="hotels" className="flex font-semibold text-lg items-center px-4">Our Hotels</Link>
 						</li>
 						<li className="flex">
-							<Link rel="noopener noreferrer" to="about" className="flex font-semibold items-center px-4">About</Link>
+							<Link rel="noopener noreferrer" to="about" className="flex font-semibold text-lg items-center px-4">About</Link>
 						</li>
 						<li className="flex">
-							<Link rel="noopener noreferrer" to="contact" className="flex font-semibold items-center px-4">Contact</Link>
+							<Link rel="noopener noreferrer" to="contact" className="flex font-semibold text-lg items-center px-4">Contact</Link>
 						</li>
 					</ul>
 				</div>
