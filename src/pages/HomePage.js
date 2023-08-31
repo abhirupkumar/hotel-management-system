@@ -28,7 +28,7 @@ const hotels = [
     img: 'https://source.unsplash.com/random/300x300/?2',
   },
   {
-    location: 'Bangalore',
+    location: 'Amritsar',
     img: 'https://source.unsplash.com/random/300x300/?2',
   },
 ]
@@ -62,12 +62,12 @@ const Page = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center max-w-[2000px] mx-auto font-mono'>
+    <div className='flex flex-col items-center justify-center max-w-[2000px] mx-auto'>
       <div className='flex flex-col items-center w-full'>
         <Banner />
         <ShopNow />
         <div className='w-full flex flex-col items-center space-y-8 mt-6 mb-12'>
-          <h1 className='text-4xl font-medium text-gray-600'>EXPLORE OUR HOTELS</h1>
+          <h1 className='text-4xl font-medium text-gray-700'>EXPLORE OUR HOTELS</h1>
           <div className='flex flex-wrap w-full justify-around'>
             <AliceCarousel
               responsive={responsive}
@@ -83,7 +83,7 @@ const Page = () => {
               }}
               renderPrevButton={renderPrevButton}
               renderNextButton={renderNextButton}>
-              {hotels.map((item, index) => <div key={index} className="md:max-w-[20rem] max-w-[15rem] mx-auto mb-8 shadow-xl bg-gray-50">
+              {hotels.map((item, index) => <div key={index} className="md:max-w-[20rem] max-w-[15rem] mx-auto mb-8 shadow-md bg-white">
                 <img src={item.img} alt={`${item.location} hotel`} className="object-cover object-center w-full md:h-[22rem] h-[20rem] dark:bg-gray-500" />
                 <div className="flex items-center justify-between p-4">
                   <h2 className="text-xl font-semibold">{item.location}</h2>
