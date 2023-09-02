@@ -81,13 +81,7 @@ import { AiOutlineWifi } from 'react-icons/ai';
 // ]
 
 const responsive = {
-    1702: {
-        items: 5,
-    },
     1326: {
-        items: 4,
-    },
-    982: {
         items: 3,
     },
     540: {
@@ -113,7 +107,7 @@ const RoomSlider = ({ rooms }) => {
     };
 
     return (
-        <div className='flex flex-wrap w-full justify-around'>
+        <div className='flex flex-wrap max-w-[1100px] w-full justify-around'>
             <AliceCarousel
                 responsive={responsive}
                 mouseTracking
@@ -129,8 +123,8 @@ const RoomSlider = ({ rooms }) => {
                 }}
                 renderPrevButton={renderPrevButton}
                 renderNextButton={renderNextButton}>
-                {rooms.map((item, index) => <div key={index} className="md:max-w-[20rem] max-w-[15rem] mx-auto mb-8 rounded-md shadow-lg bg-gray-50">
-                    <img src={item.img} alt="" className="object-cover object-center w-full rounded-t-md md:h-60 h-50 dark:bg-gray-500" />
+                {rooms.map((item, index) => <div key={index} className="md:max-w-[20rem] max-w-[15rem] mx-auto mb-8 shadow-lg">
+                    <img src={item.img} alt="" className="object-cover object-center w-full md:h-60 h-50 dark:bg-gray-500" />
                     <div className="flex flex-col justify-between h-[20rem] p-4 space-y-4">
                         <div className="space-y-2">
                             <h2 className="text-xl font-semibold tracki">{item.title}</h2>
