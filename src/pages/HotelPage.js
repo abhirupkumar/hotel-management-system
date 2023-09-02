@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import HotelCard from '../components/HotelCard';
 import RoomSlider from '../components/RoomSlider';
 
 const rooms = [
     {
+        _id: "68192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -12,9 +13,10 @@ const rooms = [
         feature: "Grand architecture, spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "68192H72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -22,9 +24,10 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "65192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -32,9 +35,10 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "78192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -42,9 +46,10 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "64192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -52,9 +57,10 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "68192d72D92NB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -62,9 +68,10 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
+        _id: "68192d72D92KB192HDK12NC19",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -72,7 +79,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
 ]
 
@@ -186,7 +193,7 @@ const Hotel = () => {
             <HotelCard hotel={hotel} />
             <div className='mt-10 w-full flex flex-col items-center justify-center'>
                 <h1 className='text-4xl mb-10 font-semibold text-gray-800'>Guests Room</h1>
-                <RoomSlider rooms={rooms} />
+                <RoomSlider rooms={rooms} hotel={hotel} />
             </div>
         </div>
     )

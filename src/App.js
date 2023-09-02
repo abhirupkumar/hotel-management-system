@@ -4,9 +4,10 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Page from './pages/HomePage';
 import Hotels from './pages/HotelsPage';
+import Hotel from './pages/HotelPage';
 import Rooms from './pages/RoomsPage';
 import Footer from './components/Footer';
-import Hotel from './pages/HotelPage';
+import HotelRoomsPage from './pages/HotelRoomsPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/hotels" element={<Hotels />} />
           <Route exact path="/rooms" element={<Rooms />} />
           <Route exact path="/hotel/:slug" element={<Hotel />} />
+          <Route exact path="/hotel/:slug/rooms-and-suites" element={<HotelRoomsPage />} />
         </Routes>
         <Footer />
       </AuthProvider>
