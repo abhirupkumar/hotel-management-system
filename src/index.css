@@ -4,6 +4,6 @@
 
 @layer {
     body {
-        @apply bg-white;
+        @apply bg-white scroll-smooth overflow-x-hidden;
     }
 }

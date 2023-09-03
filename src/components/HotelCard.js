@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { BsTelephone } from 'react-icons/bs'
 import { CiLocationOn } from 'react-icons/ci'
 import { TbHotelService } from 'react-icons/tb'
+import { Link } from 'react-router-dom'
 
 const sideimages = [
     "https://www.tajhotels.com/content/dam/luxury/hotels/Taj_Mahal_Mumbai/images/gallery/Aquarius%20Suite%20-%20Bedroom.jpg/jcr:content/renditions/cq5dam.web.323.323.jpeg",
@@ -80,7 +81,7 @@ const HotelCard = ({ hotel }) => {
                         <div className='flex flex-col w-full space-y-2 !mt-8'>
                             <h1 className='font-bold'>Hotel Essentials</h1>
                             <div className='flex text-black w-full space-x-1'>
-                                <button className='underline text-xs !text-orange-500'>Download Brochure</button>
+                                <Link to={`${process.env.REACT_APP_HOST}/hotel/${hotel.slug}/rooms-and-suites`} className='underline text-xs !text-blue-600'>View Rooms</Link>
                                 <p className='text-xs'>|</p>
                                 <p className='text-xs'>GSTIN : 38ABBCX3957G1Z9</p>
                             </div>

@@ -8,6 +8,8 @@ import Hotel from './pages/HotelPage';
 import Rooms from './pages/RoomsPage';
 import Footer from './components/Footer';
 import HotelRoomsPage from './pages/HotelRoomsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route exact path="/rooms" element={<Rooms />} />
           <Route exact path="/hotel/:slug" element={<Hotel />} />
           <Route exact path="/hotel/:slug/rooms-and-suites" element={<HotelRoomsPage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+          <Route exact path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </AuthProvider>

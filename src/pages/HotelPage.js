@@ -5,7 +5,7 @@ import RoomSlider from '../components/RoomSlider';
 
 const rooms = [
     {
-        _id: "68192d72D92KB192HDK12NC12",
+        roomId: "68192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -16,7 +16,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "68192H72D92KB192HDK12NC12",
+        roomId: "68192H72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -27,7 +27,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "65192d72D92KB192HDK12NC12",
+        roomId: "65192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -38,7 +38,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "78192d72D92KB192HDK12NC12",
+        roomId: "78192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -49,7 +49,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "64192d72D92KB192HDK12NC12",
+        roomId: "64192d72D92KB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -60,7 +60,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "68192d72D92NB192HDK12NC12",
+        roomId: "68192d72D92NB192HDK12NC12",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,
@@ -71,7 +71,7 @@ const rooms = [
         img: 'https://source.unsplash.com/random/300x300/?hotel',
     },
     {
-        _id: "68192d72D92KB192HDK12NC19",
+        roomId: "68192d72D92KB192HDK12NC19",
         title: 'Deluxe Room',
         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
         price: 5000.0,

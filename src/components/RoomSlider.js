@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 // const rooms = [
 //     {
-//         _id: "68192d72D92KB192HDK12NC12",
+//         roomId: "68192d72D92KB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'These cozy rooms located in the historic Palace Wing are the gateway to a memorable experience. Perfect for meditation, these windowless rooms offer you complete tranquillity. Designed for our jet-setting business travellers who require silence.',
 //         price: 17000.0,
@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "68192H72D92KB192HDK12NC12",
+//         roomId: "68192H72D92KB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'These rooms are located in the Palace Wing on the 2nd, 3rd and 4th floors. They exude an aura of the old-world charm and elegance. These rooms are adorned with delicate Rajput bay-windows, offering spectacular views of the poolside or the bustling Mumbai city. Includes butler service and Inclusive WiFi for four devices.',
 //         price: 17000.0,
@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "65192d72D92KB192HDK12NC12",
+//         roomId: "65192d72D92KB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
 //         price: 17000.0,
@@ -43,7 +43,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "78192d72D92KB192HDK12NC12",
+//         roomId: "78192d72D92KB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
 //         price: 17000.0,
@@ -54,7 +54,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "64192d72D92KB192HDK12NC12",
+//         roomId: "64192d72D92KB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
 //         price: 17000.0,
@@ -65,7 +65,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "68192d72D92NB192HDK12NC12",
+//         roomId: "68192d72D92NB192HDK12NC12",
 //         title: 'Deluxe Room',
 //         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
 //         price: 17000.0,
@@ -76,7 +76,7 @@ import { Link } from 'react-router-dom';
 //         img: 'https://source.unsplash.com/random/300x300/?room',
 //     },
 //     {
-//         _id: "68192d72D92KB192HDK12NC19",
+//         roomId: "68192d72D92KB192HDK12NC19",
 //         title: 'Deluxe Room',
 //         desc: 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer',
 //         price: 17000.0,
@@ -156,7 +156,7 @@ const RoomSlider = ({ rooms, hotel }) => {
                             <p className="text-sm md:flex hidden">{item.feature}</p>
                         </div>
                         <div className='flex flex-1 justify-between items-center'>
-                            <Link rel="noopener noreferrer" to={`${process.env.REACT_APP_HOST}/hotel/${hotel.slug}/rooms-and-suites`} className='text-blue-600 border-2 border-blue-600 md:p-2 p-1 text-sm rounded-md'>View Details</Link>
+                            <Link rel="noopener noreferrer" to={`${process.env.REACT_APP_HOST}/hotel/${hotel.slug}/rooms-and-suites?id=${item.roomId}`} className='text-blue-600 border-2 border-blue-600 md:p-2 p-1 text-sm rounded-md'>View Details</Link>
                             <p className='text-sm'>₹{item.price} / night</p>
                         </div>
                     </div>
