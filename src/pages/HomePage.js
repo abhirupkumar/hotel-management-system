@@ -1,7 +1,6 @@
 import React from 'react'
 import Banner from '../components/Banner'
 import ShopNow from '../components/ShopNow'
-import Footer from '../components/Footer'
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
@@ -160,7 +159,6 @@ const Page = () => {
             </AliceCarousel>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   )

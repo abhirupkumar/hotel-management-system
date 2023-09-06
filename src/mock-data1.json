@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "RoomNo": "132",
+        "RoomTitle": "Regular",
+        "Beds": "2",
+        "RArea": "250 sq ft",
+        "Desc": "A Regular Medium-Sized Room for Regular Customers.",
+        "Ft": "Single AC, Single TV, Single Bathroom, Wifi Available, Room Service include charges, Pool Accesible only for 3 hrs",
+        "Price": "10k"
+    },
+    {
+        "id": 2,
+        "RoomNo": "345",
+        "RoomTitle": "Deluxe",
+        "Beds": "4",
+        "RArea": "350 sq ft",
+        "Desc": "Deluxe Room for Customers to enjoy throughout their stay.",
+        "Ft": "Double AC, Single TV, Double Bathroom, Wifi Available, Room Service include charges, Complementary Breakfast, Pool Accesible for 12 hrs",
+        "Price": "20k"
+    },
+    {
+        "id": 3,
+        "RoomNo": "490",
+        "RoomTitle": "Double Deluxe",
+        "Beds": "4 (King Size)",
+        "RArea": "400 sq ft",
+        "Desc": "Double Deluxe Rooms for Thorough Luxury and Sheer Comfort.",
+        "Ft": "Includes all features of Deluxe, Single Refrigerator, Pool Accessible for 24 hrs, Free Room Service 24/7 ",
+        "Price": "25k"
+    },
+    {
+        "id": 4,
+        "RoomNo": "504",
+        "RoomTitle": "VIP",
+        "Beds": "5",
+        "RArea": "500 sq ft",
+        "Desc": "VIP Rooms for Business Clients and Official Pesonnel",
+        "Ft": "Includes all features of Double Deluxe, Jacuzzi Available, Free Lunch, SNacks and Dinner",
+        "Price": "40k"
+    },
+    {
+        "id": 5,
+        "RoomNo": "609",
+        "RoomTitle": "Penthouse",
+        "Beds": "6 (King Size)",
+        "RArea": "750 sq ft",
+        "Desc": "Penthouse for Celebrities and Government Officials ",
+        "Ft": "Includes all features of Double Deluxe, Triple bathroom, Spa Room, Free Dinner at Roof Available, Free Entry to Hotel Parties and Events",
+        "Price": "50k"
+    }
+]

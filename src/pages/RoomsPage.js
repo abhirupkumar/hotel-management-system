@@ -11,7 +11,7 @@ const rooms = [
         feature: "Grand architecture, spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "68192H72D92KB192HDK12NC12",
@@ -22,7 +22,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "65192d72D92KB192HDK12NC12",
@@ -33,7 +33,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "78192d72D92KB192HDK12NC12",
@@ -44,7 +44,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "64192d72D92KB192HDK12NC12",
@@ -55,7 +55,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "68192d72D92NB192HDK12NC12",
@@ -66,7 +66,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
     {
         _id: "68192d72D92KB192HDK12NC19",
@@ -77,7 +77,7 @@ const rooms = [
         feature: "Spacious rooms and bathrooms.",
         noOfPeople: 3,
         bedsize: "King",
-        img: 'https://source.unsplash.com/random/300x300/?2',
+        img: 'https://source.unsplash.com/random/300x300/?hotel-room',
     },
 ]
 

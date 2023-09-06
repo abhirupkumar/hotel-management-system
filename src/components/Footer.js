@@ -1,6 +1,8 @@
+import { useUser } from '@clerk/clerk-react';
 import React from 'react'
 
 const Footer = () => {
+    const { isLoaded, isSignedIn, user } = useUser();
     return (
         <footer className="p-6 bg-gray-800 text-gray-100 w-full">
             <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-4">
