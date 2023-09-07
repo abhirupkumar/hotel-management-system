@@ -14,8 +14,8 @@ const Header = () => {
 		<header className="px-2 dark:bg-gray-800 bg-white font-mono shadow-md">
 			<div className="container flex justify-between mx-auto">
 				<div className="flex space-x-2">
-					<Link rel="noopener noreferrer" to="" aria-label="Back to homepage" className="flex items-center p-2">
-						<img className='w-[4.5rem] object-contain' src="https://www.tajhotels.com/content/dam/tajhotels/icons/style-icons/logo--Taj.png" alt="icon" />
+					<Link rel="noopener noreferrer" to="" aria-label="Back to homepage" className="flex items-center">
+						<img className='w-[4.5rem] object-contain' src="./logo.png" alt="icon" />
 					</Link>
 					<ul className="items-stretch hidden space-x-3 lg:flex">
 						<li className="flex">

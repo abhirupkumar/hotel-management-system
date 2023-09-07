@@ -31,7 +31,7 @@ const PaymentPage = () => {
                 amount: data.amount,
                 order_id: data.id,
                 description: "Thank You for booking our suite.",
-                image: "/logo.png",
+                image: "./logo.png",
                 handler: function (response) {
                     setShowLoad(false);
                 },
