@@ -2,9 +2,10 @@ import { MenuItem, TextField } from "@mui/material";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const SignInPage = () => {
+const ForgotPassword = () => {
 
     const [role, setRole] = useState("CUSTOMER");
     const [emailAddress, setEmailAddress] = useState("");
@@ -16,7 +17,7 @@ const SignInPage = () => {
     return (
         <div className="w-full flex sm:flex-row flex-col items-center min-h-screen justify-center">
             <div className="sm:w-1/2 mt-1 w-full">
-                <img className="w-full" src="./sign-in.gif" alt="sign-in" loading="eager" />
+                <img className="w-full" src="./forgot-password.gif" alt="forgot-password" loading="eager" />
             </div>
             <div className="flex-col items-center sm:w-1/2 w-full p-10 mb-5">
                 <div className="flex-col space-y-10 items-center sm:w-[80%] w-full">
@@ -42,11 +43,11 @@ const SignInPage = () => {
                         </TextField>
                         <div className="flex flex-col justify-start">
                             <label className="font-semibold text-sm" htmlFor="email">Email Address</label>
-                            <input className="border-[1px] border-gray-300 rounded-lg p-2" onChange={(e) => setEmailAddress(e.target.value)} id="email" name="email" type="email" placeholder="Enter Your Email Address" />
+                            <input className="border-[1px] border-gray-300 rounded-lg p-2" onChange={(e) => setEmailAddress(e.target.value)} id="email" name="email" type="email" />
                         </div>
                         <div className="flex flex-col justify-start">
                             <label className="font-semibold text-sm" htmlFor="password">Password</label>
-                            <input className="border-[1px] border-gray-300 rounded-lg p-2" onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" placeholder="Enter Your Password" />
+                            <input className="border-[1px] border-gray-300 rounded-lg p-2" onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" />
                         </div>
                         <div className="flex flex-col justify-start">
                             <label className="font-semibold text-sm" htmlFor="phone">Phone Number</label>
@@ -57,7 +58,7 @@ const SignInPage = () => {
                                 countryCodeEditable={false}
                                 onChange={setPhoneNumber} />
                         </div>
-                        <button className="p-2 rounded-lg text-white font-semibold !mt-8 bg-blue-600 hover:bg-blue-500">Sign In</button>
+                        <button className="p-2 rounded-lg text-white font-semibold !mt-8 bg-blue-600 hover:bg-blue-500">Sign Up</button>
                         <div className="flex text-sm justify-between">
                             <div>Don't have an account, <span onClick={() => navigate('/sign-up')} className="text-blue-500 cursor-pointer">Sign Up</span></div>
                             <span onClick={() => navigate('/forgot-password')} className="text-blue-500 cursor-pointer">Forgot your password</span>
@@ -67,5 +68,6 @@ const SignInPage = () => {
             </div>
         </div>
     );
-};
-export default SignInPage;
+}
+
+export default ForgotPassword

@@ -16,6 +16,7 @@ import { useUser } from '@clerk/clerk-react';
 import FeedbackPage from './pages/FeedbackPage';
 import AddRoomsPage from './pages/AddRoomsPage';
 import PaymentPage from './pages/PaymentPage';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
 
@@ -38,6 +39,11 @@ function App() {
           exact
           path="/sign-up"
           element={<SignUpPage />}
+        />
+        <Route
+          exact
+          path="/forgot-password"
+          element={<ForgotPassword />}
         />
         <Route exact path="/" element={<Page />} />
         <Route exact path="/feedback" element={<FeedbackPage />} />
