@@ -6,9 +6,6 @@ import Popup from './Popup';
 const Header = () => {
 	const { isLoaded, isSignedIn, user } = useUser();
 	const [showPopup, setshowPopup] = useState(false);
-	useEffect(() => {
-		console.log(showPopup)
-	}, [showPopup])
 
 	return (
 		<header className="px-2 dark:bg-gray-800 bg-white font-mono shadow-md">

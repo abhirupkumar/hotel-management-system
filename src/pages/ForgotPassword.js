@@ -4,6 +4,7 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { auth } from "../firebase";
 
 const ForgotPassword = () => {
 
@@ -13,6 +14,11 @@ const ForgotPassword = () => {
     const [password, setPassword] = useState("");
     const [code, setCode] = useState("");
     const navigate = useNavigate();
+    const user = auth.currentUser;
+
+    if (!user) {
+        navigate("/");
+    }
 
     return (
         <div className="w-full flex sm:flex-row flex-col items-center min-h-screen justify-center">

@@ -1,4 +1,43 @@
-/* HTML: <div class="loader"></div> */
+.cl-signUp-root {
+    width: 80%;
+}
+
+.cl-signUp-start {
+    box-shadow: none !important;
+    width: auto !important;
+}
+
+.cl-card {
+    box-shadow: none;
+    width: auto;
+}
+
+.cl-userButtonPopoverCard {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 24px 48px !important;
+    width: 23.5rem !important;
+}
+
+@media (max-width: 640px) {
+    .cl-signUp-root {
+        width: 100%;
+    }
+}
+
+.cl-signIn-root {
+    width: 80%;
+}
+
+.cl-signIn-start {
+    box-shadow: none !important;
+    width: auto !important;
+}
+
+@media (max-width: 640px) {
+    .cl-signIn-root {
+        width: 100%;
+    }
+}
+
 .custom-loader {
     width: 40px;
     height: 30px;
