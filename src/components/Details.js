@@ -2,7 +2,7 @@ import React from "react";
 import data from "../mock-data.json";
 import Table from "./Table";
 import { useState } from "react";
-function Table1() {
+function Details({ rooms, setRooms }) {
     const [Contacts, setContacts] = useState(data);
     const [addFormData, setaddFormData] = useState({
         Name: "",
@@ -30,7 +30,7 @@ function Table1() {
     return (
         <>
             <div className="flex flex-col gap-[1px] w-auto mx-[12px] mt-[6px]">
-                <table className="border-collapse">
+                {/* <table className="border-collapse">
                     <thead>
                         <tr>
                             <th className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(239, 219, 138)]">Name</th>
@@ -47,9 +47,9 @@ function Table1() {
                             </tr>
                         ))}
                     </tbody>
-                </table>
-                <Table />
-                <h2 className="my-[4px]">Enter details</h2>
+                </table> */}
+                <Table rooms={rooms} setRooms={setRooms} />
+                {/* <h2 className="my-[4px]">Enter details</h2>
                 <form className="flex flex-wrap items-center justify-center gap-[12px] w-fit" onSubmit={handleAddFormSubmit}>
                     <input
                         className="flex flex-wrap w-[12em] h-[2em] p-[2px] text-sm"
@@ -75,7 +75,7 @@ function Table1() {
                         placeholder="Enter Phone No."
                         onChange={handleAddFormChange}
                     />
-                </form>
+                </form> */}
                 <button className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
                     Check Availability
                 </button>
@@ -84,4 +84,4 @@ function Table1() {
     );
 }
 
-export default Table1;
+export default Details;

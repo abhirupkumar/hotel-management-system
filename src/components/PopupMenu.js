@@ -1,27 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { Link } from "react-router-dom";
-import Table1 from "./Table1";
+import { Link, useNavigate } from "react-router-dom";
+import Details from "./Details";
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
+import { Autocomplete, TextField } from "@mui/material";
+import hotelsdata from "../hotels.json";
 
-function PopupMenu() {
+const hotels = hotelsdata.map((hotel) => {
+    return {
+        label: hotel.title + ", " + hotel.place,
+        slug: hotel.slug,
+    }
+})
+
+function PopupMenu({ onClose }) {
+    const [rooms, setRooms] = useState([{
+        adults: 1,
+        children: 0,
+    }])
+    const [value, setValue] = useState();
+    const [slug, setSlug] = useState("the-royal-serenity-in-mumbai");
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!!value)
+            setSlug(hotels.filter((hotel) => hotel.label == value)[0].slug);
+    }, [value])
+
+    const handleClick = () => {
+        navigate(`/hotel/${slug}`);
+        onClose();
+    }
+
     return (
         <>
-            <div className="flex justify-between items-center flex-wrap ">
-                <div className="flex align-middle flex-1 h-10 border border-black mx-3 my-2 ">
-                    <input
-                        className=" bg-white border-none flex-1 px-2 text-xs"
-                        placeholder="Search for Hotels..."
-                    ></input>
-                    <div className=" cursor-pointer p-2">
-                        <Link to={`/rooms`}>
+            <div className="flex flex-col justify-between items-center flex-wrap ">
+                <div className="flex w-full align-middle flex-1 mx-3 my-2 ">
+                    <Autocomplete
+                        disablePortal
+                        id="search-box"
+                        value={value}
+                        onChange={(event, newValue) => {
+                            setValue(newValue);
+                        }}
+                        options={hotels.map((option) => option.label)}
+                        freeSolo
+                        className="rounded !border-none flex-1 text-xs"
+                        renderInput={(params) => <TextField {...params} label="Search for Hotels" fullWidth />}
+                    />
+                    <div className=" cursor-pointer p-2 mt-1">
+                        <button onClick={handleClick}>
                             <SearchIcon />
-                        </Link>
+                        </button>
                     </div>
                 </div>
                 <div className="flex justify-between flex-wrap space-x-4 mx-4">
@@ -41,7 +76,7 @@ function PopupMenu() {
                     </div>
                 </div>
             </div>
-            <Table1 />
+            <Details rooms={rooms} setRooms={setRooms} />
         </>
     );
 }

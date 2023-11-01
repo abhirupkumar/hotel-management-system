@@ -8,11 +8,11 @@ function Popup({ isVisible, onClose }) {
         <>
             <div className="fixed inset-0 bg-black bg-opacity-25 z-50 backdrop-blur-sm flex justify-center items-center">
                 <div className="w-1/2">
-                    <div className="bg-zinc-200 p-2 rounded h-fit w-auto flex flex-col">
+                    <div className="bg-zinc-200 p-8 rounded h-fit w-auto flex flex-col">
                         <button className="place-self-end" onClick={() => onClose()}>
-                            <IoCloseSharp />
+                            <IoCloseSharp className="h-6 w-6" />
                         </button>
-                        <PopupMenu />
+                        <PopupMenu onClose={onClose} />
                     </div>
                 </div>
             </div>
