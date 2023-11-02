@@ -76,7 +76,7 @@ function PopupMenu({ onClose }) {
                     </div>
                 </div>
             </div>
-            <Details rooms={rooms} setRooms={setRooms} />
+            <Details rooms={rooms} setRooms={setRooms} onClose={onClose} startDate={startDate} endDate={endDate} hotelSlug={slug} />
         </>
     );
 }

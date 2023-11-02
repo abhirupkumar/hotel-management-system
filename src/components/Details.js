@@ -1,84 +1,121 @@
 import React from "react";
-import data from "../mock-data.json";
 import Table from "./Table";
 import { useState } from "react";
-function Details({ rooms, setRooms }) {
-    const [Contacts, setContacts] = useState(data);
-    const [addFormData, setaddFormData] = useState({
-        Name: "",
-        Email: "",
-        Phone: "",
-    });
-    const handleAddFormChange = (event) => {
-        event.preventDefault();
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-        const newFormData = { ...addFormData };
-        newFormData[fieldName] = fieldValue;
-        setaddFormData(newFormData);
-    };
-    const handleAddFormSubmit = (event) => {
-        event.preventDefault();
-        const NewContact = {
-            Name: addFormData.Name,
-            Email: addFormData.Email,
-            Phone: addFormData.Phone,
-        };
-        const newContacts = [...Contacts, NewContact];
-        setContacts(newContacts);
-    };
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { CircularProgress } from "@mui/material";
+import bookingsData from '../bookings.json';
+import hotelsdata from "../hotels.json";
+function Details({ rooms, setRooms, onClose, startDate, endDate, hotelSlug }) {
+
+    const { isSignedIn, user } = useUser();
+    const navigate = useNavigate();
+    const [availability, setAvailability] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [totalAdults, setTotalAdults] = useState(0);
+    const [totalChildren, setTotalChildren] = useState(0);
+    const [paid, setPaid] = useState(false);
+    const [bookings, setBookings] = useState(bookingsData);
+    useEffect(() => {
+        if (rooms.length > 0) {
+            setTotalAdults(rooms.reduce((acc, room) => acc + room.adults, 0));
+            setTotalChildren(rooms.reduce((acc, room) => acc + room.children, 0));
+        }
+    }, [rooms]);
+
+    const loadPayment = async () => {
+        const diffInTime = endDate.getTime() - startDate.getTime();
+        const diffInDays2 = diffInTime / (1000 * 3600 * 24);
+        var diffInDays = diffInDays2 % 1 > 0 ? Math.floor(diffInDays2 + 1) : diffInDays2;
+        if (diffInDays < 0) diffInDays = 0;
+        const price = (17000 * totalAdults + 10000 * totalChildren) * (diffInDays + 1);
+        const oid = Math.floor(Math.random() * Date.now());
+        const rdata = { price: price, oid: oid };
+        const data = await fetch(`https://pixelwear.vercel.app/api/razorpay`, {
+            method: "POST",
+            body: JSON.stringify(rdata),
+        }).then((t) => t.json());
+        const hotel = hotelsdata.filter((hotel) => hotel.slug == hotelSlug)[0];
+
+        const paymentObject = new window.Razorpay({
+            key: process.env.RAZORPAY_KEY,
+            name: "Royal Panorama Hotel",
+            currency: "INR",
+            amount: data.amount,
+            order_id: data.id,
+            description: "Thank You for booking our suite.",
+            image: "./logo.png",
+            handler: function (response) {
+                const newBooking = {
+                    orderId: oid,
+                    transactionId: response.razorpay_payment_id,
+                    hotel: hotel,
+                    rooms: rooms,
+                    startDate: startDate,
+                    endDate: endDate,
+                    price: price,
+                    paid: true,
+                };
+                localStorage.setItem("bookings", JSON.stringify(newBooking));
+                setPaid(true);
+                navigate(`/bookings/${oid}`);
+                onClose();
+                setLoading(false);
+            },
+            prefill: {
+                name: user.fullName,
+                email: user.primaryEmailAddress.emailAddress,
+                contact: user.phoneNumbers[0].phoneNumber,
+            },
+        });
+
+        paymentObject.open();
+    }
+    const initializeRazorpay = async (e) => {
+        return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+            script.onload = () => {
+                resolve(true);
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+
+            document.body.appendChild(script);
+        });
+    }
+    const handleBooking = async () => {
+        setLoading(true);
+        loadPayment();
+    }
+
     return (
         <>
             <div className="flex flex-col gap-[1px] w-auto mx-[12px] mt-[6px]">
-                {/* <table className="border-collapse">
-                    <thead>
-                        <tr>
-                            <th className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(239, 219, 138)]">Name</th>
-                            <th className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(239, 219, 138)]">Email</th>
-                            <th className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(239, 219, 138)]">Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {Contacts.map((contact) => (
-                            <tr key={contact.email}>
-                                <td className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(242, 244, 200)]">{contact.Name} </td>
-                                <td className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(242, 244, 200)]">{contact.Email}</td>
-                                <td className="border-[1px] border-gray-100 text-left p-[4px] font-[12px] mr-[4px] bg-[rgb(242, 244, 200)]">{contact.Phone}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table> */}
                 <Table rooms={rooms} setRooms={setRooms} />
-                {/* <h2 className="my-[4px]">Enter details</h2>
-                <form className="flex flex-wrap items-center justify-center gap-[12px] w-fit" onSubmit={handleAddFormSubmit}>
-                    <input
-                        className="flex flex-wrap w-[12em] h-[2em] p-[2px] text-sm"
-                        type="text"
-                        name="Name"
-                        required="required"
-                        placeholder="Enter Name"
-                        onChange={handleAddFormChange}
-                    />
-                    <input
-                        className="flex flex-wrap w-[12em] h-[2em] p-[2px] text-sm"
-                        type="email"
-                        name="Email"
-                        required="required"
-                        placeholder="Enter Email"
-                        onChange={handleAddFormChange}
-                    />
-                    <input
-                        className="flex flex-wrap w-[12em] h-[2em] p-[2px] text-sm"
-                        type="text"
-                        name="Phone"
-                        required="required"
-                        placeholder="Enter Phone No."
-                        onChange={handleAddFormChange}
-                    />
-                </form> */}
-                <button className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
-                    Check Availability
-                </button>
+                <div className="flex justify-around items-center">
+                    {availability == true && <p className="mx-2 text-lg text-green-600">Available!</p>}
+                    {availability == false && <p className="mx-2 text-lg text-red-600">Not Availble!</p>}
+                    {availability == true && !isSignedIn && <button onClick={() => {
+                        navigate('/sign-in');
+                        onClose();
+                    }} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
+                        Log In to Book
+                    </button>}
+                    {availability == true && isSignedIn && !paid && (!loading ? <button onClick={handleBooking} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
+                        Book Now
+                    </button> : <CircularProgress />)}
+                    <button onClick={async () => {
+                        setLoading(false);
+                        await initializeRazorpay();
+                        setAvailability(true)
+                    }} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
+                        Check Availability
+                    </button>
+                </div>
             </div>
         </>
     );

@@ -16,6 +16,8 @@ import { useUser } from '@clerk/clerk-react';
 import FeedbackPage from './pages/FeedbackPage';
 import AddRoomsPage from './pages/AddRoomsPage';
 import PaymentPage from './pages/PaymentPage';
+import { useEffect } from 'react';
+import BookingsPage from './pages/BookingsPage';
 
 function App() {
 
@@ -47,6 +49,7 @@ function App() {
         <Route exact path="/admin/addrooms" element={<AddRoomsPage />} />
         <Route exact path="/hotel/:slug" element={<Hotel />} />
         <Route exact path="/hotel/:slug/rooms-and-suites" element={<HotelRoomsPage />} />
+        <Route exact path="/bookings/:id" element={<BookingsPage />} />
         <Route exact path="/about" element={<AboutPage />} />
         <Route exact path="/contact" element={<ContactPage />} />
       </Routes>
