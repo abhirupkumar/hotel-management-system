@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import bookingsData from '../bookings.json';
 import hotelsdata from "../hotels.json";
+import { loadStripe } from "@stripe/stripe-js";
 function Details({ rooms, setRooms, onClose, startDate, endDate, hotelSlug }) {
 
     const { isSignedIn, user } = useUser();
@@ -92,6 +93,55 @@ function Details({ rooms, setRooms, onClose, startDate, endDate, hotelSlug }) {
         loadPayment();
     }
 
+    const handleStripeBooking = async () => {
+
+        setLoading(true);
+        const hotel = hotelsdata.filter((hotel) => hotel.slug == hotelSlug)[0];
+        const stripeLoad = await loadStripe("pk_test_51O8GgXSC5RDUV7ZLE5JZCaZh9vcXppyfuy3YMZE6eXaiYchDB4e2T7g8ERc9A1HfxgZFWyzDlWqSRtLL1zyywLWp00iPLDaLYi");
+        const stripe = require("stripe")("sk_test_51O8GgXSC5RDUV7ZLt0C6msqzShpqfRWPLVUJlK42ZEnW92W8XyhgCHOKN8svrGZ5eJjQ1NAZeoLgc8A66BbwO0IF00yWsO2Bqc")
+        const diffInTime = endDate.getTime() - startDate.getTime();
+        const diffInDays2 = diffInTime / (1000 * 3600 * 24);
+        var diffInDays = diffInDays2 % 1 > 0 ? Math.floor(diffInDays2 + 1) : diffInDays2;
+        if (diffInDays < 0) diffInDays = 0;
+        const price = (17000 * totalAdults + 10000 * totalChildren) * (diffInDays + 1);
+        const oid = Math.floor(Math.random() * Date.now());
+        const newBooking = {
+            orderId: oid,
+            transactionId: Math.floor(Math.random() * Date.now()),
+            hotel: hotel,
+            rooms: rooms,
+            startDate: startDate,
+            endDate: endDate,
+            price: price,
+            paid: true,
+        };
+        localStorage.setItem("bookings", JSON.stringify(newBooking));
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: [
+                {
+                    price_data: {
+                        currency: "inr",
+                        product_data: {
+                            name: "Payble Amount",
+                        },
+                        unit_amount: price * 100,
+                    },
+
+                    quantity: 1
+                },
+            ],
+            mode: "payment",
+            success_url: `${process.env.REACT_APP_HOST}/bookings/${oid}`,
+            cancel_url: `${process.env.REACT_APP_HOST}`,
+        })
+        onClose();
+        const result = stripeLoad.redirectToCheckout({
+            sessionId: session.id,
+        });
+        setPaid(true);
+    }
+
     return (
         <>
             <div className="flex flex-col gap-[1px] w-auto mx-[12px] mt-[6px]">
@@ -105,12 +155,12 @@ function Details({ rooms, setRooms, onClose, startDate, endDate, hotelSlug }) {
                     }} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
                         Log In to Book
                     </button>}
-                    {availability == true && isSignedIn && !paid && (!loading ? <button onClick={handleBooking} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
+                    {availability == true && isSignedIn && !paid && (!loading ? <button onClick={handleStripeBooking} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
                         Book Now
                     </button> : <CircularProgress />)}
                     <button onClick={async () => {
                         setLoading(false);
-                        await initializeRazorpay();
+                        // await initializeRazorpay();
                         setAvailability(true)
                     }} className="flex items-center p-[4px] place-self-end mt-[12px] w-[12em] h-[3em] bg-[rgb(239, 219, 138)] rounded-md text-sm text-white bg-black justify-center hover:shadow-xl" type="submit">
                         Check Availability

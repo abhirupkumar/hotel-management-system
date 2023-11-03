@@ -5,25 +5,32 @@ import { Container, Typography } from '@mui/material';
 const BookingsPage = () => {
     const { id } = useParams();
     const [bookingData, setBookingData] = useState(null);
+    const [roomNumber, setRoomNumber] = useState([]);
 
     useEffect(() => {
-        setBookingData(localStorage.getItem('bookings'));
+        const data = JSON.parse(localStorage.getItem('bookings'));
+        setBookingData(data);
+        var roomNum = []
+        for (let i = 0; i < data.rooms.length; i++) {
+            roomNum.push(132 + i);
+        }
+        setRoomNumber(roomNum);
     }, [id]);
 
     return (
-        <Container className="mx-auto mt-8 p-4 border rounded-lg bg-white">
+        <Container className="mx-auto min-h-screen my-8 p-4 border rounded-lg bg-white">
             {bookingData ? (
                 <div>
                     <Typography variant="h4" className="mb-4">Booking Confirmed!</Typography>
                     <div>
-                        <p className="mb-2">Order ID: {bookingData.orderId}</p>
-                        <p className="mb-2">Transaction ID: {bookingData.transactionId}</p>
-                        <p className="mb-2">Hotel: {bookingData.hotel}</p>
-                        <p className="mb-2">Rooms: {bookingData.rooms}</p>
-                        <p className="mb-2">Start Date: {bookingData.startDate}</p>
-                        <p className="mb-2">End Date: {bookingData.endDate}</p>
-                        <p className="mb-2">Price: {bookingData.price}</p>
-                        <p>Paid: {bookingData.paid ? 'Yes' : 'No'}</p>
+                        <p className="mb-2"><b>Order ID:</b> {bookingData.orderId}</p>
+                        <p className="mb-2"><b>Transaction ID:</b> {bookingData.transactionId}</p>
+                        <p className="mb-2"><b>Hotel:</b> {bookingData.hotel.title + ", " + bookingData.hotel.place}</p>
+                        <p className="mb-2"><b>Room(s) Booked:</b> {bookingData.rooms.length}</p>
+                        <p className="mb-2"><b>Room Number(s):</b> {roomNumber.join(', ')}</p>
+                        <p className="mb-2"><b>Arrival Date:</b> {(new Date(bookingData.startDate)).toDateString()}</p>
+                        <p className="mb-2"><b>Departure Date:</b> {(new Date(bookingData.endDate)).toDateString()}</p>
+                        <p className="mb-2"><b>Price:</b> Rs. {bookingData.price}</p>
                     </div>
                 </div>
             ) : (
